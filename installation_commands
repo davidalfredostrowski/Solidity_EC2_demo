@@ -1,0 +1,8 @@
+sudo apt-get update
+sudo apt-get install  nodejs
+sudo apt-get install  npm
+npm –v
+node – v
+npm init -y
+npm install web3 solc@0.4.25 
+npm install ganache-cli
