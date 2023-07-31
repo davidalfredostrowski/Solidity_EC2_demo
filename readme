@@ -25,6 +25,45 @@ myContract.methods.getGreeting().call().then(console.log);
 
 # updated version running node.js v18, solidity 0.8.19      (ran on 7/31/2023)
 
+sudo apt-get update
+curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs build-essential
+
+npm init -y
+npm install web3 solc@0.8.19	
+npm install ganache-cli
+
+
+
+vi Hello.sol
+
+pragma solidity ^0.8.19;
+
+// Store a single data point and allow fetching/updating of that datapoint
+contract Hello {
+
+    // data point
+    string public storedData;
+
+    event myEventTest(string eventOutput);
+
+    function set(string memory myText) public {
+        storedData = myText;
+        emit myEventTest(myText);
+    }
+
+    function get() public view returns (string memory) {
+        return storedData;
+    }
+
+}
+
+./node_modules/.bin/ganache-cli --port 8545  --chainId 5777 -h  ec2-35-92-115-75.us-west-2.compute.amazonaws.com
+node:
+
+
+
 
 
 
