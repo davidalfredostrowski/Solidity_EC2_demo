@@ -12,7 +12,7 @@ npm install ganache-cli
 
 
 
-## updated 7/31/2023
+## updated 7/31/2023 for node.js v18 , solidity 0.8.19
 
 
 sudo apt-get update
