@@ -17,3 +17,55 @@ helloContract.deploy({ data: helloByteCode } ).send({ from:accounts[0], gas: 470
 web3.eth.getBalance(accounts[1]).then(function(result) { console.log(web3.utils.fromWei(result,"ether"));  });
 myContract.methods.setGreeting("hello blockchain").send({ from: accounts[0]});
 myContract.methods.getGreeting().call().then(console.log);
+
+
+
+
+
+
+# updated version running node.js v18, solidity 0.8.19      (ran on 7/31/2023)
+
+
+
+
+
+
+
+
+# run the node console
+node
+
+
+const { Web3 } = require('web3');
+web3 = new Web3('http://ec2-35-92-115-75.us-west-2.compute.amazonaws.com:8545')
+var solc = require('solc');
+var CONTRACT_FILE = 'Hello.sol'
+var content =fs.readFileSync(CONTRACT_FILE).toString()
+var input = {
+   language: 'Solidity',
+   sources: {
+     [CONTRACT_FILE]: {
+       content: content
+     }
+   },
+   settings: {
+     outputSelection: {
+       '*': {
+         '*': ['*']
+       }
+     }
+   }
+}
+
+var compiled = solc.compile(JSON.stringify(input))
+var output = JSON.parse(compiled)
+var abi = output.contracts[CONTRACT_FILE]['Hello'].abi
+var bytecode = output.contracts[CONTRACT_FILE]['Hello'].evm.bytecode.object
+await web3.eth.getAccounts().then(function (result) {accounts = result})
+await HelloWorld.deploy({ data: bytecode } ).send({ from: accounts[0], gas: 470000}).then(function(result) { myContract = result;})
+await myContract.methods.set("hello ...").send({ from: accounts[0]});
+await myContract.methods.get().call().then(console.log);
+
+
+
+
