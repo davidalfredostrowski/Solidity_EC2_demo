@@ -106,5 +106,11 @@ await myContract.methods.set("hello ...").send({ from: accounts[0]});
 await myContract.methods.get().call().then(console.log);
 
 
+ref
+https://stackoverflow.com/questions/53461034/solidity-compiler-problem-with-helloworld-smart-contract?noredirect=1&lq=1
+
+
+
+
 
 
