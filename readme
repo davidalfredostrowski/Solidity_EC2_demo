@@ -105,7 +105,9 @@ var bytecode = output.contracts[CONTRACT_FILE]['Hello'].evm.bytecode.object
 await web3.eth.getAccounts().then(function (result) {accounts = result})
 var HelloWorld = new web3.eth.Contract(abi);
 await HelloWorld.deploy({ data: bytecode } ).send({ from: accounts[0], gas: 470000}).then(function(result) { myContract = result;})
+web3.eth.getBalance(accounts[1]).then(function(result) { console.log(web3.utils.fromWei(result,"ether"));  });
 await myContract.methods.set("hello ...").send({ from: accounts[0]});
+web3.eth.getBalance(accounts[1]).then(function(result) { console.log(web3.utils.fromWei(result,"ether"));  });
 await myContract.methods.get().call().then(console.log);
 
 
