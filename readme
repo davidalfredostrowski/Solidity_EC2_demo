@@ -111,6 +111,7 @@ await myContract.methods.get().call().then(console.log);
 
 ref
 https://stackoverflow.com/questions/53461034/solidity-compiler-problem-with-helloworld-smart-contract?noredirect=1&lq=1
+https://ethereum.stackexchange.com/questions/50294/typeerror-web3-is-not-a-constructor-when-trying-to-use-node-js-with-truffle-con
 
 
 
