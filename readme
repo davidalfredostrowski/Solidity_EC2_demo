@@ -101,6 +101,7 @@ var output = JSON.parse(compiled)
 var abi = output.contracts[CONTRACT_FILE]['Hello'].abi
 var bytecode = output.contracts[CONTRACT_FILE]['Hello'].evm.bytecode.object
 await web3.eth.getAccounts().then(function (result) {accounts = result})
+var HelloWorld = new web3.eth.Contract(abi);
 await HelloWorld.deploy({ data: bytecode } ).send({ from: accounts[0], gas: 470000}).then(function(result) { myContract = result;})
 await myContract.methods.set("hello ...").send({ from: accounts[0]});
 await myContract.methods.get().call().then(console.log);
